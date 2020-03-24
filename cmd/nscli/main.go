@@ -23,7 +23,8 @@ import (
 	"github.com/tendermint/go-amino"
 	"github.com/tendermint/tendermint/libs/cli"
 
-	"github.com/cosmos/gaia/app"
+	"github.com/xuyp1991/cosaccount/app"
+	easystorecmd "github.com/xuyp1991/cosaccount/x/easystore/client/cli"
 )
 
 func main() {
@@ -118,6 +119,7 @@ func txCmd(cdc *amino.Codec) *cobra.Command {
 		authcmd.GetBroadcastCommand(cdc),
 		authcmd.GetEncodeCommand(cdc),
 		client.LineBreak,
+		easystorecmd.GetTxCmd(cdc),
 	)
 
 	// add modules' tx commands
