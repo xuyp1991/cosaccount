@@ -30,7 +30,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/x/staking"
 	"github.com/cosmos/cosmos-sdk/x/supply"
 	easystoretype "github.com/xuyp1991/cosaccount/x/easystore/types"
-	easystore "github.com/xuyp1991/cosaccount/x/easystore/functt"
+	easystore "github.com/xuyp1991/cosaccount/x/easystore"
 )
 
 const appName = "GaiaApp"
