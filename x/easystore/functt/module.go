@@ -67,7 +67,7 @@ func (AppModuleBasic) GetTxCmd(cdc *codec.Codec) *cobra.Command {
 // GetQueryCmd returns no root query command for the bank module.
 func (AppModuleBasic) GetQueryCmd(cdc *codec.Codec) *cobra.Command {
 	//暂时先获取这个cmd
-	return cli.GetTxCmd(cdc)
+	return cli.GetQueryCmd(easystore.ModuleName,cdc)
 }
 
 //____________________________________________________________________________

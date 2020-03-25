@@ -143,29 +143,8 @@ func (k Keeper) IterateAllBalances(ctx sdk.Context, cb func(sdk.AccAddress, sdk.
 func NewQuerier(keeper Keeper) sdk.Querier {
 	return func(ctx sdk.Context, path []string, req abci.RequestQuery) ([]byte, sdk.Error) {
 		switch path[0] {
-		// case types.QueryParams:
-		// 	return queryParams(ctx, path[1:], req, keeper)
-
-		// case types.QueryProposals:
-		// 	return queryProposals(ctx, path[1:], req, keeper)
-
-		// case types.QueryProposal:
-		// 	return queryProposal(ctx, path[1:], req, keeper)
-
-		// case types.QueryDeposits:
-		// 	return queryDeposits(ctx, path[1:], req, keeper)
-
-		// case types.QueryDeposit:
-		// 	return queryDeposit(ctx, path[1:], req, keeper)
-
-		// case types.QueryVotes:
-		// 	return queryVotes(ctx, path[1:], req, keeper)
-
-		// case types.QueryVote:
-		// 	return queryVote(ctx, path[1:], req, keeper)
-
-		// case types.QueryTally:
-		// 	return queryTally(ctx, path[1:], req, keeper)
+		case types.QueryValue:
+			return queryResolve(ctx, path[1:], req, keeper)
 
 		default:
 			return nil, sdk.ErrUnknownRequest("unknown bank query endpoint")

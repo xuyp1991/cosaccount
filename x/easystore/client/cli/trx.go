@@ -23,3 +23,19 @@ func GetTxCmd(cdc *codec.Codec) *cobra.Command {
 	)
 	return txCmd
 }
+
+// GetTxCmd returns the transaction commands for this module
+func GetQueryCmd(queryRoute string, cdc *codec.Codec) *cobra.Command {
+	txCmd := &cobra.Command{
+		Use:                        easystore.ModuleName,
+		Short:                      "Auth transaction subcommands",
+		DisableFlagParsing:         true,
+		SuggestionsMinimumDistance: 2,
+		RunE:                       client.ValidateCmd,
+	}
+	txCmd.AddCommand(
+		GetCmdValue(queryRoute,cdc),
+		// GetSignCommand(cdc),
+	)
+	return txCmd
+}
