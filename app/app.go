@@ -3,6 +3,7 @@ package app
 import (
 	"io"
 	"os"
+	"fmt"
 
 	abci "github.com/tendermint/tendermint/abci/types"
 	cmn "github.com/tendermint/tendermint/libs/common"
@@ -119,6 +120,8 @@ func NewGaiaApp(logger log.Logger, db dbm.DB, traceStore io.Writer, loadLatest b
 
 	bApp := bam.NewBaseApp(appName, logger, db, auth.DefaultTxDecoder(cdc), baseAppOptions...)
 	bApp.SetCommitMultiStoreTracer(traceStore)
+
+	setVersion() 
 	bApp.SetAppVersion(version.Version)
 
 	keys := sdk.NewKVStoreKeys(
@@ -268,4 +271,14 @@ func (app *GaiaApp) ModuleAccountAddrs() map[string]bool {
 	}
 
 	return modAccAddrs
+}
+
+func setVersion() {
+	fmt.Println("xuyapeng add for test setVersion")
+	      version.Name="cosaccount"
+		  version.ServerName="cosaccount" 
+		  version.ClientName="cosaccount" 
+		  version.Version="0.0.1"
+		  version.Commit="commit info"
+		 version.BuildTags=""
 }
